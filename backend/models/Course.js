@@ -70,8 +70,16 @@ const courseSchema = new mongoose.Schema({
   isActive: {
     type: Boolean,
     default: true
-  }
-}, {
+  },files: [{
+    name: { type: String, required: true },
+    url: { type: String, required: true },
+    size: { type: Number },
+    cloudinaryId: { type: String, required: true }, // For deletion
+    uploadedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    uploadedAt: { type: Date, default: Date.now }
+  }]
+}, 
+{
   timestamps: true
 });
 

@@ -46,7 +46,11 @@ export const courseAPI = {
   getById: (id) => api.get(`/courses/${id}`),
   create: (data) => api.post('/courses', data),
   update: (id, data) => api.put(`/courses/${id}`, data),
-  delete: (id) => api.delete(`/courses/${id}`)
+  delete: (id) => api.delete(`/courses/${id}`),
+  uploadFile: (courseId, formData) => api.post(`/courses/${courseId}/upload`, formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }),
+  deleteFile: (courseId, fileId) => api.delete(`/courses/${courseId}/files/${fileId}`)
 };
 
 // Enrollment API
